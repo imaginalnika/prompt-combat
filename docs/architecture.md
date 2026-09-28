@@ -6,7 +6,7 @@ Attack text -> damage evaluation -> defense input -> success-rate evaluation -> 
 
 The pipeline accepts `judge(system, messages, kind) -> Dictionary`. It keeps separate histories by task kind. `damage` results require numeric `dmg`; `rate` requires numeric `success_rate`. Invalid or timed-out results return an explicit failure to the session, leaving that input retryable rather than inventing a successful judgment.
 
-`evaluation_helpers.gd` preserves normalization, substring filtering, brace-window parsing, field salvage, and sentence paging helpers. `json_stream_parser.gd` preserves the incremental string/number/array watcher implementation and final JSON reconciliation. The default HTTP judge is nonstreaming; streaming hosts can use this parser independently through their judge adapter.
+`evaluation_helpers.gd` provides normalization, substring filtering, brace-window parsing, field salvage, and sentence paging helpers. `json_stream_parser.gd` provides incremental string/number/array watchers and final JSON reconciliation. The default HTTP judge is nonstreaming; streaming hosts can use this parser independently through their judge adapter.
 
 ## Events and state
 
@@ -20,6 +20,6 @@ Cancellation invalidates in-flight evaluations. Optional `generate_attack` / `ge
 
 ## Probability policy
 
-Attack pressure transforms probability with `p + pressure*p*(1-p)`. Optional failure-streak adjustment adds a configurable number of percentage points per miss. Exact 0% and 100% remain absolute. The returned `effective_rate` and `roll` are the actual resolution inputs; there is no disguised/forged display roll or story-forced win/loss.
+Attack pressure transforms probability with `p + pressure*p*(1-p)`. Optional failure-streak adjustment adds a configurable number of percentage points per miss. Exact 0% and 100% remain absolute. The returned `effective_rate` and `roll` are the actual resolution inputs.
 
 The initial default is neutral (no pressure or failure bonus). Seed `rules.rng` for reproducible tests. Encounter-specific balancing belongs to the consuming application.

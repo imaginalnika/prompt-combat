@@ -1,4 +1,4 @@
-# prompt-combat
+# Prompt Combat
 
 A Godot framework for LLM-evaluated natural-language combat.
 
@@ -31,12 +31,14 @@ var resolution = await combat.submit_defense("I step aside.")
 
 The judge receives `(system_prompt, messages, kind)` and returns a dictionary. `http_json_judge.gd` supplies an optional OpenAI-compatible chat endpoint adapter with explicit configuration. Voice input can submit transcribed text; no microphone library is required.
 
-## Scope
+## Integration
 
-An initial standalone extraction/adaptation of an existing combat implementation, with application-specific encounters and presentation removed. This does not claim that the original application imports the package. No original characters, story rules, artwork, audio, or cinematic assets are included.
+The host application supplies combatants, a judge callable, and presentation. Connect the session's signals to your UI and configure damage bounds, attack pressure, and failure-streak adjustments through its rules.
 
 The included neutral prompts demonstrate the schema; they are not balance guarantees or hardened protection against adversarial player instructions. Hosted-model compatibility and game balance need separate testing.
 
-See [architecture](docs/architecture.md), [extraction notes](docs/provenance.md), and [security](SECURITY.md).
+See [architecture](docs/architecture.md) and [security](SECURITY.md).
+
+## License
 
 Apache-2.0; see [LICENSE](LICENSE) and [NOTICE](NOTICE). Godot is a separate MIT-licensed dependency.

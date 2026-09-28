@@ -1,5 +1,5 @@
 extends RefCounted
-## Probability policy extracted from a turn-based combat runtime; no encounter-specific overrides.
+## Configurable probability policy for turn-based combat.
 var damage_min := 2
 var damage_max := 7
 var attack_pressure := 0.0
